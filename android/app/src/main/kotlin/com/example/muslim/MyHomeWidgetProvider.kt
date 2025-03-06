@@ -16,28 +16,31 @@ class MyHomeWidgetProvider : HomeWidgetProvider() {
         widgetData: SharedPreferences
     ) {
         for (widgetId in appWidgetIds) {
-            // نفترض أن لديك ملف تصميم باسم widget_layout.xml في res/layout
-            val views = RemoteViews(context.packageName, R.layout.widget_layout)
+            val views = RemoteViews(context.packageName, R.layout.home_widget_layout)
             
-            // جلب النص المحفوظ من SharedPreferences
-            val widgetText = widgetData.getString("widget_text", "Default Text")
-            views.setTextViewText(R.id.widget_text, widgetText)
             
-            // إنشاء Intent لفتح التطبيق عند الضغط على الودجت
+            val dateText = widgetData.getString("date", "2025/2/1")
+            val fajr = widgetData.getString("fajr", "--:--")
+            val Isha = widgetData.getString("Isha", "--:--")
+            val dhuhr = widgetData.getString("dhuhr", "--:--")
+            val asr = widgetData.getString("asr", "--:--")
+            val maghrib = widgetData.getString("maghrib", "--:--")
+            
+            
+            views.setTextViewText(R.id.date_text, dateText)
+            views.setTextViewText(R.id.fajr_time, fajr)
+            views.setTextViewText(R.id.Isha_time, Isha)
+            views.setTextViewText(R.id.dhuhr_time, dhuhr)
+            views.setTextViewText(R.id.asr_time, asr)
+            views.setTextViewText(R.id.maghrib_time, maghrib)
+            
+            
             val intent = Intent(context, MainActivity::class.java)
-            intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-
             val pendingIntent = PendingIntent.getActivity(
-                context,
-                0,
-                intent,
-                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
-            
-            // تعيين PendingIntent على العنصر الرئيسي في تصميم الودجت (يفضل أن يكون له معرف معين مثل R.id.widget_container)
             views.setOnClickPendingIntent(R.id.widget_container, pendingIntent)
             
-            // تحديث الودجت
             appWidgetManager.updateAppWidget(widgetId, views)
         }
     }
