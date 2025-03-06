@@ -7,41 +7,26 @@ class OuterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('muslim app')),
-        body: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  HomeWidget.saveWidgetData<String>(
-                      'widget_text', 'صلي على محمد');
-                  // Provide the fully qualified name of your widget provider
-                  HomeWidget.updateWidget(name: 'MyHomeWidgetProvider');
-                },
-                child: Text('صلي على محمد'),
-              ),
-                 ElevatedButton(
-                onPressed: () {
-                  HomeWidget.saveWidgetData<String>(
-                      'widget_text', 'استغفر الله');
-                  // Provide the fully qualified name of your widget provider
-                  HomeWidget.updateWidget(name: 'MyHomeWidgetProvider');
-                },
-                child: Text('استغفر الله'),
-              ),
-                 ElevatedButton(
-                onPressed: () {
-                  HomeWidget.saveWidgetData<String>(
-                      'widget_text',  'لا اله الا الله');
-                  // Provide the fully qualified name of your widget provider
-                  HomeWidget.updateWidget(name: 'MyHomeWidgetProvider');
-                },
-                child: Text( 'لا اله الا الله'),
-              ),
-            ],
-          ),
+      appBar: AppBar(title: Text('Prayer Times Widget')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            updatePrayerTimes();
+          },
+          child: Text('Update Widget'),
         ),
-      );
+      ),
+    );
   }
+}
+
+void updatePrayerTimes() {
+  HomeWidget.saveWidgetData<String>('date', '20 April 2025');
+  HomeWidget.saveWidgetData<String>('fajr', '4:49 AM');
+  HomeWidget.saveWidgetData<String>('Isha', '7:20 AM');
+  HomeWidget.saveWidgetData<String>('dhuhr', '12:30 PM');
+  HomeWidget.saveWidgetData<String>('asr', '3:45 PM');
+  HomeWidget.saveWidgetData<String>('maghrib', '6:10 PM');
+
+  HomeWidget.updateWidget(name: 'MyHomeWidgetProvider');
 }
