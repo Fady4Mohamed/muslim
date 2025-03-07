@@ -1,6 +1,8 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:muslim/app/core/routing/app_router.dart';
+import 'package:muslim/app/core/utils/app_color.dart';
 import 'package:muslim/app/featuers/out/presentation/ui/outer_view.dart';
 
 void main() {
@@ -19,11 +21,13 @@ class Muslim extends StatelessWidget {
         builder: (context, child) => MediaQuery(
             data: MediaQuery.of(context)
                 .copyWith(textScaler: const TextScaler.linear(1.0)),
-            child: const SafeArea(
+            child: SafeArea(
               bottom: true,
               top: false,
-              child: MaterialApp(
-                home: OuterView(),
+              child: MaterialApp.router(
+                theme: ThemeData.dark()
+                    .copyWith(scaffoldBackgroundColor: AppColor.mainColor),
+                routerConfig: AppRouter.router,
               ),
             )));
   }
