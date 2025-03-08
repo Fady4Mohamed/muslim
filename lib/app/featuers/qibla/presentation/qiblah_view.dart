@@ -51,7 +51,7 @@ class QiblahViewState extends State<QiblahView> {
                       children: [
                         const SizedBox(height: 150),
                         Transform.rotate(
-                          angle: state.qiblahDirection * (pi / 180),
+                          angle: -state.qiblahDirection * (pi / 180),
                           child: const CustomImageAsset(
                               imagePath: AppImages.imagesQibla),
                         ),
