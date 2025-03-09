@@ -1,20 +1,27 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:muslim/app/featuers/qibla/logic/cubit/qiblah_cubit.dart';
+import 'package:muslim/app/featuers/home/presentation/home_view.dart';
 import 'package:muslim/app/featuers/qibla/presentation/qiblah_view.dart';
+import 'package:muslim/app/shared/navigation_bar.dart';
 
 class AppRouter {
+  static const pageNavBar = '/pageNavBar';
+  static const homeView = '/homeView';
   static const qiblaView = '/qiblaView';
 
   static final router = GoRouter(
-    initialLocation: qiblaView,
+    initialLocation: pageNavBar,
     routes: [
       GoRoute(
+        path: pageNavBar,
+        builder: (context, state) => const CustomPageNavigationBar(),
+      ),
+      GoRoute(
+        path: homeView,
+        builder: (context, state) => const HomeView(),
+      ),
+      GoRoute(
         path: qiblaView,
-        builder: (context, state) => BlocProvider(
-          create: (context) => QiblahCubit(),
-          child: const QiblahView(),
-        ),
+        builder: (context, state) => const QiblahView(),
       ),
     ],
   );
