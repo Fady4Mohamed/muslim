@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:muslim/app/core/routing/app_router.dart';
 import 'package:muslim/app/core/utils/app_color.dart';
-import 'package:muslim/app/featuers/azkar/presentation/ui/azkar_page.dart';
 import 'package:muslim/app/shared/custom_text.dart';
 
 class AzkarButton extends StatelessWidget {
@@ -11,11 +12,8 @@ class AzkarButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) {
-            return const AzkarPage();
-          },
-        ));
+        
+        GoRouter.of(context).push(AppRouter.azkarPage);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
