@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:muslim/app/core/utils/app_color.dart';
-import 'package:muslim/app/featuers/azkar/presentation/ui/azkar_page.dart';
+import 'package:muslim/app/featuers/azkar/models/azkar_names_model.dart';
+import 'package:muslim/app/featuers/azkar/ui/azkar_page.dart';
 import 'package:muslim/app/shared/custom_text.dart';
 
-class AzkarButton extends StatelessWidget {
-  const AzkarButton({super.key, required this.azkarName});
-  final String azkarName;
+class AzkarNameButton extends StatelessWidget {
+  const AzkarNameButton({super.key, required this.model});
+  final AzkarNamesModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class AzkarButton extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return const AzkarPage();
+            return AzkarPage(title: model.name!, id: model.id!);
           },
         ));
       },
@@ -31,7 +32,7 @@ class AzkarButton extends StatelessWidget {
             ),
           ),
           child: Center(
-            child: CustomText(text: azkarName, fontSize: 20),
+            child: CustomText(text: model.name!, fontSize: 20),
           ),
         ),
       ),
