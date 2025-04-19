@@ -12,6 +12,7 @@ class CustomText extends StatelessWidget {
   final int? maxLines;
   final double? height;
   final TextAlign? textAlign;
+  final TextDirection? textDirection;
   const CustomText({
     super.key,
     required this.text,
@@ -22,6 +23,7 @@ class CustomText extends StatelessWidget {
     this.textAlign,
     this.height,
     this.maxLines = 2,
+    this.textDirection,
   });
 
   @override
