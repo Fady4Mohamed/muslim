@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:muslim/app/featuers/azkar/presentation/ui/azkar_page.dart';
+import 'package:muslim/app/featuers/azkar/ui/azkar_view.dart';
 import 'package:muslim/app/featuers/home/presentation/home_view.dart';
 import 'package:muslim/app/featuers/qibla/presentation/qiblah_view.dart';
 import 'package:muslim/app/shared/navigation_bar.dart';
@@ -27,7 +27,7 @@ class AppRouter {
       ),
       GoRoute(
         path: azkarPage,
-        builder: (context, state) => const AzkarPage(),
+        builder: (context, state) => const AzkarView(),
       ),
     ],
   );
