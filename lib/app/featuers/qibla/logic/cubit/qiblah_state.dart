@@ -10,7 +10,6 @@ class QiblahLoading extends QiblahState {}
 class QiblahLoaded extends QiblahState {
   final double qiblahDirection;
   QiblahLoaded(this.qiblahDirection);
-
 }
 
 class QiblahError extends QiblahState {

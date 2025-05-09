@@ -5,7 +5,7 @@ import 'package:muslim/app/core/utils/app_color.dart';
 import 'package:muslim/app/core/utils/app_images.dart';
 import 'package:muslim/app/featuers/azkar/ui/azkar_view.dart';
 import 'package:muslim/app/featuers/home/presentation/home_view.dart';
-import 'package:muslim/app/featuers/prayer/presentation/prayer_view.dart';
+import 'package:muslim/app/featuers/prayer/presentation/view/prayer_view.dart';
 import 'package:muslim/app/featuers/qibla/logic/cubit/qiblah_cubit.dart';
 import 'package:muslim/app/featuers/qibla/presentation/qiblah_view.dart';
 import 'package:muslim/app/shared/custom_image.dart';
