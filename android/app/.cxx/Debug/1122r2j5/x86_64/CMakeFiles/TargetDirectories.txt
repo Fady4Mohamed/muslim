@@ -1,0 +1,2 @@
+D:/projects/Muslimm/muslim/android/app/.cxx/Debug/1122r2j5/x86_64/CMakeFiles/edit_cache.dir
+D:/projects/Muslimm/muslim/android/app/.cxx/Debug/1122r2j5/x86_64/CMakeFiles/rebuild_cache.dir
