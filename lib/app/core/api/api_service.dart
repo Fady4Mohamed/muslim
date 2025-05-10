@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 class ApiServices {
   final Dio _dio;
 
-  final baseUrl = "tbd";
+  final baseUrl = "https://api.aladhan.com/v1/";
 
   ApiServices(this._dio);
 
