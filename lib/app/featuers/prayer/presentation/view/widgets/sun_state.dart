@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:muslim/app/featuers/prayer/presentation/manger/prayer_details_cubit/prayer_details_cubit.dart';
 
@@ -55,22 +56,27 @@ class _SunStateState extends State<SunState> {
           if (inRange == 1) {
             return SvgPicture.asset(
               'assets/images/fajrr.svg',
+              height: 60.h,
             );
           } else if (inRange == 2) {
             return SvgPicture.asset(
               'assets/images/Sunny.svg',
+              height: 60.h,
             );
           } else if (inRange == 3) {
             return SvgPicture.asset(
               'assets/images/Asr.svg',
+              height: 60.h,
             );
           } else if (inRange == 4) {
             return SvgPicture.asset(
               'assets/images/Magrib.svg',
+              height: 60.h,
             );
           } else {
             return SvgPicture.asset(
               'assets/images/fajrr.svg',
+              height: 60.h,
             );
           }
         } else if (state is PrayerDetailsCubitFauilre) {
