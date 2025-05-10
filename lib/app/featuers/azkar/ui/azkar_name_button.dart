@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:muslim/app/core/routing/app_router.dart';
 import 'package:muslim/app/core/utils/app_color.dart';
 import 'package:muslim/app/featuers/azkar/models/azkar_names_model.dart';
+import 'package:muslim/app/featuers/azkar/ui/azkar_page.dart';
 import 'package:muslim/app/shared/custom_text.dart';
 
 class AzkarNameButton extends StatelessWidget {
@@ -13,7 +12,13 @@ class AzkarNameButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.azkarPage);
+
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  AzkarPage(id: model.id!, title: model.name!),
+            ));
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -21,7 +26,7 @@ class AzkarNameButton extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.08,
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: AppColor.mainColorLight,
+            color: const Color.fromARGB(98, 36, 15, 79),
             borderRadius: BorderRadius.circular(15),
             border: Border.all(
               color: AppColor.secondaryColor, // Outline color

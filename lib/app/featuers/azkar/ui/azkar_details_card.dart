@@ -8,9 +8,15 @@ import 'package:muslim/app/shared/custom_image.dart';
 import 'package:muslim/app/shared/custom_text.dart';
 
 class AzkarDetailsCard extends StatefulWidget {
-  const AzkarDetailsCard({super.key, required this.id, required this.title});
+  const AzkarDetailsCard({
+    super.key,
+    required this.id,
+    this.title,
+    required this.isHome,
+  });
   final int id;
-  final String title;
+  final String? title;
+  final bool isHome;
 
   @override
   State<AzkarDetailsCard> createState() => _AzkarDetailsCardState();
@@ -28,7 +34,6 @@ class _AzkarDetailsCardState extends State<AzkarDetailsCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
         color: AppColor.secondaryColor,
         borderRadius: BorderRadius.circular(15),
@@ -72,33 +77,40 @@ class _AzkarDetailsCardState extends State<AzkarDetailsCard> {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                const SizedBox(height: 50),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: detailsList.length,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          CustomText(
-                            text: detailsList[index].content!,
-                            fontSize: 20,
-                            textAlign: TextAlign.center,
-                            maxLines: 1000,
-                          ),
-                          Align(
-                            heightFactor: 1.5,
-                            alignment: Alignment.centerLeft,
-                            child: CustomText(
-                                text: '[ ${detailsList[index].reference!} ]',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black),
-                          ),
-                          const SizedBox(height: 60),
-                        ],
-                      );
-                    },
+                if (widget.isHome!)
+                  const Center(
+                    child: CustomText(
+                      text: "اذكار المساء",
+                      fontSize: 25,
+                    ),
                   ),
+                const SizedBox(height: 20),
+                ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: detailsList.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        CustomText(
+                          text: detailsList[index].content!,
+                          fontSize: 20,
+                          textAlign: TextAlign.center,
+                          maxLines: 1000,
+                        ),
+                        Align(
+                          heightFactor: 1.5,
+                          alignment: Alignment.centerLeft,
+                          child: CustomText(
+                              text: '[ ${detailsList[index].reference!} ]',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black),
+                        ),
+                        const SizedBox(height: 60),
+                      ],
+                    );
+                  },
                 ),
                 const SizedBox(height: 30),
               ],

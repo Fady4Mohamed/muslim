@@ -9,35 +9,51 @@ import 'package:muslim/app/featuers/prayer/data/repos/prayer_repo.dart';
 
 class PrayerRepoImpl implements PrayerRepo {
   final ApiServices apiServices;
-  String? date , hijri ;
+  String? date, hijri;
   PrayerRepoImpl(this.apiServices);
+  List<PrayEntityModel> prayesEntity = [];
   @override
-  Future<Either<Failure, List<PrayEntityModel>>> fetchPrayerDrtails() async {
+  Future<Either<Failure, List<PrayEntityModel>>> fetchPrayerDrtails(
+      {required double lat, required double long}) async {
     log("11110");
     try {
       log("22220");
-      var data = await apiServices.get(queryParameters: {"address": "الاسكندرية,مصر"}, endPoint: "/timingsByAddress");
+      var data = await apiServices.get(queryParameters: {
+        "latitude": lat,
+        "longitude": long,
+      }, endPoint: "/timings");
 
       log("33330");
-      List<PrayEntityModel> prayesEntity = [];
 
       PrayerModel prayerModel = PrayerModel.fromJson(data);
       date = prayerModel.data!.date!.readable;
       hijri = prayerModel.data!.date!.hijri!.date;
       Timings prayerModell = prayerModel.data!.timings!;
       prayesEntity.add(PrayEntityModel(
-          time: prayerModell.fajr!, name: "Fajr", sun: "Down", image: "assets/images/Cloudy-clear at times1.png"));
+          time: prayerModell.fajr!,
+          name: "Fajr",
+          sun: "Down",
+          image: "assets/images/Cloudy-clear at times1.png"));
       prayesEntity.add(PrayEntityModel(
-          time: prayerModell.dhuhr!, name: "Dhuhr", sun: "Noon", image: "assets/images/Cloudy-clear at times2.png"));
+          time: prayerModell.dhuhr!,
+          name: "Dhuhr",
+          sun: "Noon",
+          image: "assets/images/Cloudy-clear at times2.png"));
       prayesEntity.add(PrayEntityModel(
-          time: prayerModell.asr!, name: "Asr", sun: "AfterNoon", image: "assets/images/Cloudy-clear at times3.png"));
+          time: prayerModell.asr!,
+          name: "Asr",
+          sun: "AfterNoon",
+          image: "assets/images/Cloudy-clear at times3.png"));
       prayesEntity.add(PrayEntityModel(
           time: prayerModell.maghrib!,
           name: "Maghrib",
           sun: "Sunset",
           image: "assets/images/Cloudy-clear at times1.png"));
       prayesEntity.add(PrayEntityModel(
-          time: prayerModell.isha!, name: "Isha", sun: "Night", image: "assets/images/Cloudy-clear at times2.png"));
+          time: prayerModell.isha!,
+          name: "Isha",
+          sun: "Night",
+          image: "assets/images/Cloudy-clear at times2.png"));
 
       return right(prayesEntity);
     } on Exception catch (e) {
