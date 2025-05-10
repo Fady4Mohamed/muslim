@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:muslim/app/core/routing/app_router.dart';
 import 'package:muslim/app/core/utils/app_color.dart';
-import 'package:muslim/app/featuers/out/presentation/ui/outer_view.dart';
 
 void main() {
   runApp(DevicePreview(
