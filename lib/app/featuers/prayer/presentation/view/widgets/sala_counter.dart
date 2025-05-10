@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart'; // Assuming you're using flutter_screenutil
+import 'package:flutter_svg/svg.dart';
 import 'package:muslim/app/core/utils/app_color.dart';
 import 'package:muslim/app/featuers/home/logic/next_pray.dart';
 import 'package:muslim/app/featuers/prayer/data/models/pray_entity_model.dart';
@@ -38,37 +41,64 @@ class _SalaCounterState extends State<SalaCounter> {
     return BlocBuilder<PrayerDetailsCubit, PrayerDetailsCubitState>(
       builder: (context, state) {
         if (state is PrayerDetailsCubitSuccess) {
-          DateTime now = DateTime.now();
-          NextPrayerInfo nextPrayerInfo = getNextPrayerInfo(state.prayers, now);
-
+          NextPrayerInfo nextPrayerInfo = getNextPrayerInfo(state.prayers);
           PrayEntityModel nextPrayer = nextPrayerInfo.nextPrayer;
           String timeRemaining = nextPrayerInfo.timeRemaining;
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      CustomText(
-        text: '${nextPrayer.name} will begin in',
-        fontSize: 16,
-      ),
-      SizedBox(
-        width: 10.w,
-      ),
-      Container(
-        decoration: BoxDecoration(
-          color: AppColor.yellow, // Ensure AppColor.yellow is defined
-          borderRadius: BorderRadius.circular(15.r),
-        ),
-        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 5.h),
-        child: CustomText(
-          text:"-$timeRemaining",
-          fontSize: 14,
-        ),
-      ),
-    ],
-  );
-}else {
-  return const SizedBox();
-}
+          return Column(
+            children: [
+              (nextPrayer.name == 'Dhuhr')
+                  ? SvgPicture.asset(
+                      'assets/images/Sunny.svg',
+                      height: 60.h,
+                    )
+                  : (nextPrayer.name == 'Asr')
+                      ? SvgPicture.asset(
+                          'assets/images/Asr.svg',
+                          height: 60.h,
+                        )
+                      : (nextPrayer.name == 'Magrib' ||
+                              nextPrayer.name == 'Fajr')
+                          ? SvgPicture.asset(
+                              'assets/images/Magrib.svg',
+                              height: 60.h,
+                            )
+                          : SvgPicture.asset(
+                              'assets/images/fajrr.svg',
+                              height: 60.h,
+                            ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomText(
+                    text: '${nextPrayer.name} will begin in',
+                    fontSize: 16,
+                  ),
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color:
+                          AppColor.yellow, // Ensure AppColor.yellow is defined
+                      borderRadius: BorderRadius.circular(15.r),
+                    ),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 12.w, vertical: 5.h),
+                    child: CustomText(
+                      text: "-$timeRemaining",
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          );
+        } else {
+          return const SizedBox();
+        }
       },
     );
   }

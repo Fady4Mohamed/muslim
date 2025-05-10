@@ -45,8 +45,7 @@ class _NextPrayerCountdownState extends State<NextPrayerCountdown> {
     return BlocBuilder<PrayerDetailsCubit, PrayerDetailsCubitState>(
       builder: (context, state) {
         if (state is PrayerDetailsCubitSuccess) {
-          DateTime now = DateTime.now();
-          NextPrayerInfo nextPrayerInfo = getNextPrayerInfo(state.prayers, now);
+          NextPrayerInfo nextPrayerInfo = getNextPrayerInfo(state.prayers);
 
           PrayEntityModel nextPrayer = nextPrayerInfo.nextPrayer;
           String timeRemaining = nextPrayerInfo.timeRemaining;

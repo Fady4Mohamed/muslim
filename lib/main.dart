@@ -25,17 +25,19 @@ class Muslim extends StatelessWidget {
         builder: (context, child) => MediaQuery(
             data: MediaQuery.of(context)
                 .copyWith(textScaler: const TextScaler.linear(1.0)),
-            child: BlocProvider(create: (context) => PrayerDetailsCubit(
-        PrayerRepoImpl(
-          ApiServices(
-            Dio(),
-          ),
-        ),
-      )..fetchPrayerDetails(),
+            child: BlocProvider(
+              create: (context) => PrayerDetailsCubit(
+                PrayerRepoImpl(
+                  ApiServices(
+                    Dio(),
+                  ),
+                ),
+              )..fetchPrayerDetails(),
               child: SafeArea(
                 bottom: true,
                 top: false,
                 child: MaterialApp.router(
+                  debugShowCheckedModeBanner: false,
                   theme: ThemeData.dark()
                       .copyWith(scaffoldBackgroundColor: AppColor.mainColor),
                   routerConfig: AppRouter.router,

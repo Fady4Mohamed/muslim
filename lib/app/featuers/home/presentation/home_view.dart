@@ -63,7 +63,7 @@ class _HomeViewState extends State<HomeView> {
 
           // Make the entire content scrollable
           SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             child: Column(
               children: [
                 // Top section with prayer times

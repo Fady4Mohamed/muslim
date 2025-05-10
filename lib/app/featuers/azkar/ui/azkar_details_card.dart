@@ -34,7 +34,6 @@ class _AzkarDetailsCardState extends State<AzkarDetailsCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
         color: AppColor.secondaryColor,
         borderRadius: BorderRadius.circular(15),
@@ -86,32 +85,32 @@ class _AzkarDetailsCardState extends State<AzkarDetailsCard> {
                     ),
                   ),
                 const SizedBox(height: 20),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: detailsList.length,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          CustomText(
-                            text: detailsList[index].content!,
-                            fontSize: 20,
-                            textAlign: TextAlign.center,
-                            maxLines: 1000,
-                          ),
-                          Align(
-                            heightFactor: 1.5,
-                            alignment: Alignment.centerLeft,
-                            child: CustomText(
-                                text: '[ ${detailsList[index].reference!} ]',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black),
-                          ),
-                          const SizedBox(height: 60),
-                        ],
-                      );
-                    },
-                  ),
+                ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: detailsList.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        CustomText(
+                          text: detailsList[index].content!,
+                          fontSize: 20,
+                          textAlign: TextAlign.center,
+                          maxLines: 1000,
+                        ),
+                        Align(
+                          heightFactor: 1.5,
+                          alignment: Alignment.centerLeft,
+                          child: CustomText(
+                              text: '[ ${detailsList[index].reference!} ]',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black),
+                        ),
+                        const SizedBox(height: 60),
+                      ],
+                    );
+                  },
                 ),
                 const SizedBox(height: 30),
               ],

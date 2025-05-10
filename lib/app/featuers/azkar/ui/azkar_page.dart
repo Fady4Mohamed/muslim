@@ -16,12 +16,14 @@ class AzkarPage extends StatelessWidget {
         centerTitle: true,
         title: CustomText(text: title, fontSize: 32),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
-        child: AzkarDetailsCard(
-          isHome: false,
-          title: title,
-          id: id,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
+          child: AzkarDetailsCard(
+            isHome: false,
+            title: title,
+            id: id,
+          ),
         ),
       ),
     );
