@@ -19,6 +19,7 @@ class AzkarPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
         child: AzkarDetailsCard(
+          isHome: false,
           title: title,
           id: id,
         ),
