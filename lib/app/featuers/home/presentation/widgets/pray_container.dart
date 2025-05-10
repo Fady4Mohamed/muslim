@@ -1,9 +1,12 @@
+import 'dart:developer';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:muslim/app/featuers/home/logic/next_pray.dart';
+import 'package:muslim/app/featuers/prayer/data/models/pray_entity_model.dart';
 import 'package:muslim/app/featuers/prayer/presentation/manger/prayer_details_cubit/prayer_details_cubit.dart';
 
 class PrayContainer extends StatelessWidget {
@@ -30,38 +33,44 @@ class PrayContainer extends StatelessWidget {
           child: BlocBuilder<PrayerDetailsCubit, PrayerDetailsCubitState>(
             builder: (context, state) {
               if (state is PrayerDetailsCubitSuccess) {
+          NextPrayerInfo nextPrayerInfo = getNextPrayerInfo(state.prayers);
+          PrayEntityModel nextPrayer = nextPrayerInfo.nextPrayer;
                 var prayerTimes = [
                   {
                     'name': 'Fajr',
                     'time': state.prayers[0].time,
-                    'icon': "assets/images/fajr.png"
+                    'icon': "assets/images/fajr.png",
+                    'isNext': nextPrayer.name == 'Dhuhr'
                   },
                   {
-                    'name': 'Dhuhr',
+                    'name': 'Dhuhr', 
                     'time': state.prayers[1].time,
-                    'icon': "assets/images/dhuhr.png"
+                    'icon': "assets/images/dhuhr.png",
+                    'isNext': nextPrayer.name == 'Asr'
                   },
                   {
                     'name': 'Asr',
                     'time': state.prayers[2].time,
-                    'icon': "assets/images/fajr.png"
+                    'icon': "assets/images/fajr.png",
+                    'isNext': nextPrayer.name == 'Maghrib'
                   },
                   {
                     'name': 'Maghrib',
                     'time': state.prayers[3].time,
                     'icon': 'assets/images/maghrib.png',
-                    'isNext': true
+                    'isNext': nextPrayer.name == 'Isha'
                   },
                   {
                     'name': 'Isha',
                     'time': state.prayers[4].time,
-                    'icon': "assets/images/isha.png"
+                    'icon': "assets/images/isha.png",
+                    'isNext': nextPrayer.name == 'Fajr'
                   },
                 ];
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: prayerTimes.map((prayer) {
-                    final bool isNext = prayer.containsKey('isNext');
+                    final bool isNext = prayer['isNext'] as bool;
                     return Column(
                       children: [
                         Text(

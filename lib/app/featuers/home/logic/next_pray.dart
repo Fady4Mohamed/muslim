@@ -10,7 +10,8 @@ class NextPrayerInfo {
   });
 }
 
-NextPrayerInfo getNextPrayerInfo(List<PrayEntityModel> prayers, DateTime currentTime) {
+NextPrayerInfo getNextPrayerInfo(List<PrayEntityModel> prayers) {
+  DateTime currentTime = DateTime.now();
   PrayEntityModel? nextPrayer;
   Duration? timeRemaining;
   
