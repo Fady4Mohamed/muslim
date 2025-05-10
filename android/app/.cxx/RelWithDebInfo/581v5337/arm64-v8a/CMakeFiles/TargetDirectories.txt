@@ -1,0 +1,2 @@
+C:/Users/Fady/Desktop/flutter projs/muslim/android/app/.cxx/RelWithDebInfo/581v5337/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/Fady/Desktop/flutter projs/muslim/android/app/.cxx/RelWithDebInfo/581v5337/arm64-v8a/CMakeFiles/rebuild_cache.dir

@@ -10,9 +10,9 @@ import 'package:muslim/app/featuers/prayer/data/repos/prayer_repo_impl.dart';
 import 'package:muslim/app/featuers/prayer/presentation/manger/prayer_details_cubit/prayer_details_cubit.dart';
 
 void main() {
-  runApp(DevicePreview(
-    builder: (context) => const Muslim(),
-  ));
+  runApp(
+    const Muslim(),
+  );
 }
 
 class Muslim extends StatelessWidget {
