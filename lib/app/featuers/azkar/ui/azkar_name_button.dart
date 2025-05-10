@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:muslim/app/core/routing/app_router.dart';
 import 'package:muslim/app/core/utils/app_color.dart';
 import 'package:muslim/app/featuers/azkar/models/azkar_names_model.dart';
 import 'package:muslim/app/featuers/azkar/ui/azkar_page.dart';
@@ -14,6 +12,7 @@ class AzkarNameButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+
         Navigator.push(
             context,
             MaterialPageRoute(
