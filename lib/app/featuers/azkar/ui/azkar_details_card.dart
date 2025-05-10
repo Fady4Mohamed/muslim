@@ -8,9 +8,15 @@ import 'package:muslim/app/shared/custom_image.dart';
 import 'package:muslim/app/shared/custom_text.dart';
 
 class AzkarDetailsCard extends StatefulWidget {
-  const AzkarDetailsCard({super.key, required this.id, required this.title});
+  const AzkarDetailsCard({
+    super.key,
+    required this.id,
+    this.title,
+    required this.isHome,
+  });
   final int id;
-  final String title;
+  final String? title;
+  final bool isHome;
 
   @override
   State<AzkarDetailsCard> createState() => _AzkarDetailsCardState();
@@ -72,7 +78,14 @@ class _AzkarDetailsCardState extends State<AzkarDetailsCard> {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                const SizedBox(height: 50),
+                if (widget.isHome!)
+                  const Center(
+                    child: CustomText(
+                      text: "اذكار المساء",
+                      fontSize: 25,
+                    ),
+                  ),
+                const SizedBox(height: 20),
                 Expanded(
                   child: ListView.builder(
                     itemCount: detailsList.length,
