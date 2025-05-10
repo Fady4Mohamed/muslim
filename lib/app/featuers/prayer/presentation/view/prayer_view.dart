@@ -2,16 +2,15 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:muslim/app/core/api/api_service.dart';
-import 'package:muslim/app/core/utils/app_color.dart';
 import 'package:muslim/app/featuers/prayer/data/repos/prayer_repo_impl.dart';
 import 'package:muslim/app/featuers/prayer/presentation/manger/prayer_details_cubit/prayer_details_cubit.dart';
 import 'package:muslim/app/featuers/prayer/presentation/view/widgets/date_selector.dart';
 import 'package:muslim/app/featuers/prayer/presentation/view/widgets/hijri_text.dart';
 import 'package:muslim/app/featuers/prayer/presentation/view/widgets/location.dart';
 import 'package:muslim/app/featuers/prayer/presentation/view/widgets/prayer_container.dart';
-import 'package:muslim/app/shared/custom_text.dart';
+import 'package:muslim/app/featuers/prayer/presentation/view/widgets/sala_counter.dart';
+import 'package:muslim/app/featuers/prayer/presentation/view/widgets/sun_state.dart';
 
 class PrayerView extends StatelessWidget {
   const PrayerView({super.key});
@@ -48,38 +47,17 @@ class PrayerView extends StatelessWidget {
                         LocationTagApp(),
                       ],
                     ),
-                    SvgPicture.asset(
-                      'assets/images/fi_1852617.svg',
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const CustomText(
-                          text: 'Fajr will begin in',
-                          fontSize: 16,
-                        ),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: AppColor.yellow,
-                            borderRadius: BorderRadius.circular(15.r),
-                          ),
-                          padding: EdgeInsets.all(10.h.w),
-                          child: const CustomText(
-                            text: '-00:37:25',
-                            fontSize: 14,
-                          ),
-                        ),
-                      ],
-                    ),
+                    const SunState(),
                     SizedBox(
-                      height: 15.h,
+                      height: 10.h,
+                    ),
+                    const SalaCounter(),
+                    SizedBox(
+                      height: 20.h,
                     ),
                     const HijriText(),
                     SizedBox(
-                      height: 30.h,
+                      height: 40.h,
                     ),
                     const DateSelectorScreen(),
                   ],

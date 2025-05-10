@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:muslim/app/core/api/api_service.dart';
 import 'package:muslim/app/core/error/failure.dart';
