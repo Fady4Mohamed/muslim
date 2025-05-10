@@ -39,7 +39,7 @@ class QiblahCubit extends Cubit<QiblahState> {
 
   @override
   Future<void> close() {
-    _qiblahSubscription?.cancel(); 
+    _qiblahSubscription?.cancel();
     return super.close();
   }
 }

@@ -12,11 +12,13 @@ class AzkarNameButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) {
-            return AzkarPage(title: model.name!, id: model.id!);
-          },
-        ));
+
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  AzkarPage(id: model.id!, title: model.name!),
+            ));
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -24,7 +26,7 @@ class AzkarNameButton extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.08,
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: AppColor.mainColorLight,
+            color: const Color.fromARGB(98, 36, 15, 79),
             borderRadius: BorderRadius.circular(15),
             border: Border.all(
               color: AppColor.secondaryColor, // Outline color
