@@ -5,7 +5,6 @@ import 'package:muslim/app/featuers/prayer/presentation/view/widgets/hijri_text.
 import 'package:muslim/app/featuers/prayer/presentation/view/widgets/location.dart';
 import 'package:muslim/app/featuers/prayer/presentation/view/widgets/prayer_container.dart';
 import 'package:muslim/app/featuers/prayer/presentation/view/widgets/sala_counter.dart';
-import 'package:muslim/app/featuers/prayer/presentation/view/widgets/sun_state.dart';
 
 class PrayerView extends StatelessWidget {
   const PrayerView({super.key});
@@ -34,17 +33,13 @@ class PrayerView extends StatelessWidget {
                       LocationTagApp(),
                     ],
                   ),
-                  const SunState(),
-                  SizedBox(
-                    height: 10.h,
-                  ),
                   const SalaCounter(),
                   SizedBox(
                     height: 20.h,
                   ),
                   const HijriText(),
                   SizedBox(
-                    height: 40.h,
+                    height: 30.h,
                   ),
                   const DateSelectorScreen(),
                 ],
