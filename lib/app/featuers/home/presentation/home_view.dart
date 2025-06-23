@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,7 +25,6 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
-    
   }
 
   @override
@@ -34,8 +32,6 @@ class _HomeViewState extends State<HomeView> {
     _timer?.cancel();
     super.dispose();
   }
-
-  
 
   String _getCurrentTime() {
     return DateFormat('HH:mm').format(DateTime.now());
@@ -129,7 +125,7 @@ class _HomeViewState extends State<HomeView> {
                               const SizedBox(height: 12),
 
                               // Next prayer countdown
-                            const  NextPrayerCountdown(),
+                              const NextPrayerCountdown(),
                             ],
                           ),
                         ),
@@ -175,10 +171,15 @@ class _HomeViewState extends State<HomeView> {
                           ),
                         ),
                         // Remove the SingleChildScrollView since the entire screen is now scrollable
-                        child: const AzkarDetailsCard(
-                          isHome: true,
-                          id: 1,
-                        ),
+                        child: int.parse(_getCurrentTime().substring(0, 2)) > 17
+                            ? const AzkarDetailsCard(
+                                isHome: true,
+                                id: 2,
+                              )
+                            : const AzkarDetailsCard(
+                                isHome: true,
+                                id: 1,
+                              ),
                       ),
                     ),
                   ),

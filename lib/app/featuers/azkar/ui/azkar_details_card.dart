@@ -78,9 +78,9 @@ class _AzkarDetailsCardState extends State<AzkarDetailsCard> {
             child: Column(
               children: [
                 if (widget.isHome!)
-                  const Center(
+                   Center(
                     child: CustomText(
-                      text: "اذكار المساء",
+                      text:widget.id==2 ? "اذكار المساء":"اذكار الصباح",
                       fontSize: 25,
                     ),
                   ),
