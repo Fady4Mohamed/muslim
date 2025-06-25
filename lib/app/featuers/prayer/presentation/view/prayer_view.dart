@@ -18,6 +18,7 @@ class PrayerView extends StatelessWidget {
             children: [
               Image.asset(
                 "assets/images/image 12.png",
+                height: 200.h,
                 width: MediaQuery.of(context).size.width,
                 fit: BoxFit.cover,
               ),
@@ -25,7 +26,7 @@ class PrayerView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: 40.h,
+                    height: 50.h,
                   ),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -39,7 +40,7 @@ class PrayerView extends StatelessWidget {
                   ),
                   const HijriText(),
                   SizedBox(
-                    height: 30.h,
+                    height: 10.h,
                   ),
                   const DateSelectorScreen(),
                 ],

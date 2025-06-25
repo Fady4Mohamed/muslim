@@ -72,7 +72,9 @@ class _SalaCounterState extends State<SalaCounter> {
                 children: [
                   CustomText(
                     text: '${nextPrayer.name} will begin in',
-                    fontSize: 16,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: AppColor.white,
                   ),
                   SizedBox(
                     width: 10.w,
@@ -87,7 +89,9 @@ class _SalaCounterState extends State<SalaCounter> {
                         EdgeInsets.symmetric(horizontal: 12.w, vertical: 5.h),
                     child: CustomText(
                       text: "-$timeRemaining",
-                      fontSize: 14,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: AppColor.white,
                     ),
                   ),
                 ],

@@ -131,56 +131,59 @@ class _TimeAndDateContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
-      decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(16.0),
-        border: Border.all(
-          color: Colors.white.withOpacity(0.1),
-          width: 1.0,
-        ),
-      ),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 12.0, bottom: 8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomText(
-                  text: currentTime,
-                  color: Colors.white,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                ),
-                BlocSelector<PrayerDetailsCubit, PrayerDetailsCubitState,
-                    String>(
-                  selector: (state) {
-                    if (state is PrayerDetailsCubitSuccess) {
-                      return context
-                              .read<PrayerDetailsCubit>()
-                              .prayerRepoImpl
-                              .date ??
-                          "Loading";
-                    }
-                    return "Loading";
-                  },
-                  builder: (context, hijriDate) {
-                    return CustomText(
-                      text: hijriDate,
-                      color: Colors.white,
-                      fontSize: 16,
-                    );
-                  },
-                ),
-              ],
-            ),
+    return BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
+        decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(16.0),
+          border: Border.all(
+            color: Colors.white.withOpacity(0.1),
+            width: 1.0,
           ),
-          const SizedBox(height: 12),
-          // Next prayer countdown
-          const NextPrayerCountdown(),
-        ],
+        ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0, bottom: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomText(
+                    text: currentTime,
+                    color: Colors.white,
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  BlocSelector<PrayerDetailsCubit, PrayerDetailsCubitState,
+                      String>(
+                    selector: (state) {
+                      if (state is PrayerDetailsCubitSuccess) {
+                        return context
+                                .read<PrayerDetailsCubit>()
+                                .prayerRepoImpl
+                                .date ??
+                            "Loading";
+                      }
+                      return "Loading";
+                    },
+                    builder: (context, hijriDate) {
+                      return CustomText(
+                        text: hijriDate,
+                        color: Colors.white,
+                        fontSize: 16,
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 12),
+            // Next prayer countdown
+            const NextPrayerCountdown(),
+          ],
+        ),
       ),
     );
   }

@@ -23,12 +23,11 @@ class _DateSelectorScreenState extends State<DateSelectorScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 16.h),
       width: MediaQuery.of(context).size.width / 1.5,
       decoration: BoxDecoration(
-        color: AppColor.white,
+        color: Colors.transparent,
         borderRadius: BorderRadius.circular(25.r),
       ),
       child: Row(
@@ -39,10 +38,13 @@ class _DateSelectorScreenState extends State<DateSelectorScreen> {
               setState(() {});
             },
             child: CustomText(
-              text: BlocProvider.of<PrayerDetailsCubit>(context).prayerRepoImpl.date ?? "Loading",
+              text: BlocProvider.of<PrayerDetailsCubit>(context)
+                      .prayerRepoImpl
+                      .date ??
+                  "Loading",
               fontSize: 18,
               fontWeight: FontWeight.bold,
-              color: AppColor.black,
+              color: AppColor.white,
             ),
           ),
         ],
