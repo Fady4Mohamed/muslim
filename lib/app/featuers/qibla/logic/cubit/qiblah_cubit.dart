@@ -9,7 +9,7 @@ part 'qiblah_state.dart';
 class QiblahCubit extends Cubit<QiblahState> {
   QiblahCubit() : super(QiblahInitial());
 
-  StreamSubscription? _qiblahSubscription; // ✅ Store subscription
+  StreamSubscription? _qiblahSubscription; 
 
   Future<void> getQiblaDirection() async {
     emit(QiblahLoading());
@@ -24,10 +24,8 @@ class QiblahCubit extends Cubit<QiblahState> {
         }
       }
 
-      // ✅ Cancel previous subscription if exists (to avoid multiple listeners)
       _qiblahSubscription?.cancel();
 
-      // ✅ Store subscription
       _qiblahSubscription =
           FlutterQiblah.qiblahStream.listen((qiblahDirection) {
         emit(QiblahLoaded(qiblahDirection.qiblah));

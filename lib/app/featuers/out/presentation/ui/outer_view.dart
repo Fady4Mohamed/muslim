@@ -7,13 +7,13 @@ class OuterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Prayer Times Widget')),
+      appBar: AppBar(title: const Text('Prayer Times Widget')),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
             updatePrayerTimes();
           },
-          child: Text('Update Widget'),
+          child: const Text('Update Widget'),
         ),
       ),
     );
