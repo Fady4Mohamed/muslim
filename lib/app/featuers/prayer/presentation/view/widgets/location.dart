@@ -92,7 +92,8 @@ class _LocationTagAppState extends State<LocationTagApp> {
             CustomText(
               text: _location,
               color: AppColor.white,
-              fontSize: 16,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
             ),
           ],
         ),

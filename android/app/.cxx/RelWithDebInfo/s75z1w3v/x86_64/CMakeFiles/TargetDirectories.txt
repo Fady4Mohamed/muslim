@@ -1,0 +1,2 @@
+C:/3MR/muslim/android/app/.cxx/RelWithDebInfo/s75z1w3v/x86_64/CMakeFiles/edit_cache.dir
+C:/3MR/muslim/android/app/.cxx/RelWithDebInfo/s75z1w3v/x86_64/CMakeFiles/rebuild_cache.dir

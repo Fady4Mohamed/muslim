@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.muslim"
     compileSdk = 34
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "29.0.13599879"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
