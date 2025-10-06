@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- Blurred background effect -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="135"
+                android:startColor="#40FFFFFF"
+                android:centerColor="#30FFFFFF"
+                android:endColor="#20FFFFFF"
+                android:type="linear"/>
+            <corners android:radius="20dp"/>
+        </shape>
+    </item>
+    
+    <!-- Inner lighter layer for more blur depth -->
+    <item
+        android:top="2dp"
+        android:left="2dp"
+        android:right="2dp"
+        android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="135"
+                android:startColor="#35FFFFFF"
+                android:centerColor="#25FFFFFF"
+                android:endColor="#15FFFFFF"
+                android:type="linear"/>
+            <corners android:radius="18dp"/>
+        </shape>
+    </item>
+    
+    <!-- White border -->
+    <item>
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="2dp"
+                android:color="#60FFFFFF"/>
+            <corners android:radius="20dp"/>
+        </shape>
+    </item>
+    
+</layer-list>

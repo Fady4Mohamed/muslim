@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:muslim/app/featuers/home/logic/next_pray.dart';
 import 'package:muslim/app/featuers/prayer/data/models/pray_entity_model.dart';
 import 'package:muslim/app/featuers/prayer/presentation/manger/prayer_details_cubit/prayer_details_cubit.dart';
@@ -41,8 +42,14 @@ class PrayContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(16.0),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+      child: LiquidGlass(
+        glassContainsChild: false,
+        settings: const LiquidGlassSettings(
+            blur: 3,
+            refractiveIndex: 1.5,
+            ambientStrength: 2,
+            chromaticAberration: 5),
+        shape: const LiquidRoundedRectangle(borderRadius: Radius.circular(12)),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
           decoration: BoxDecoration(

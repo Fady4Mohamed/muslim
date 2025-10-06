@@ -3,181 +3,212 @@
     android:id="@+id/widget_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/black_blur_bg"
+    android:minWidth="350dp"
+    android:background="@drawable/glassy_bg"
     android:orientation="vertical"
-    android:padding="8dp">
-
-  <TextView
-        android:id="@+id/date_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="open app for refresh"
-        android:textSize="14sp"
-        android:textColor="@color/text_color"
-        android:padding="6dp"
-        android:paddingStart="12dp"
-        android:gravity="start"
-        android:textStyle="bold"/>
-
+    android:padding="16dp"
+    android:elevation="12dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center">
 
-        <!-- صلاة الفجر -->
+        <!-- Fajr Prayer -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:padding="4dp">
+            android:padding="8dp">
+            
             <TextView
                 android:id="@+id/fajr_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fajr"
-                android:textColor="@color/text_color"
-                android:textSize="14sp"/>
-               <ImageView
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:fontFamily="sans-serif-medium"
+                android:alpha="0.9"/>
+            
+            <ImageView
                 android:id="@+id/fajr_icon"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:src="@drawable/fajr"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"/>
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:alpha="0.95"/>
+            
             <TextView
                 android:id="@+id/fajr_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="--:--"
-                android:textColor="@color/text_color"
-                android:textSize="14sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:alpha="0.95"/>
         </LinearLayout>
 
-
-        <!-- صلاة الظهر -->
+        <!-- Dhuhr Prayer -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:padding="4dp">
+            android:padding="8dp">
+            
             <TextView
                 android:id="@+id/dhuhr_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dhuhr"
-                android:textColor="@color/text_color"
-                android:textSize="14sp"/>
-                <ImageView
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:fontFamily="sans-serif-medium"
+                android:alpha="0.9"/>
+            
+            <ImageView
                 android:id="@+id/dhuhr_icon"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:src="@drawable/dhuhr"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"/>
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:alpha="0.95"/>
+            
             <TextView
                 android:id="@+id/dhuhr_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="--:--"
-                android:textColor="@color/text_color"
-                android:textSize="14sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:alpha="0.95"/>
         </LinearLayout>
 
-        <!-- صلاة العصر -->
+        <!-- Asr Prayer -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:padding="4dp">
+            android:padding="8dp">
+            
             <TextView
                 android:id="@+id/asr_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Asr"
-                android:textColor="@color/text_color"
-                android:textSize="14sp"/>
-               <ImageView
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:fontFamily="sans-serif-medium"
+                android:alpha="0.9"/>
+            
+            <ImageView
                 android:id="@+id/asr_icon"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:src="@drawable/fajr"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"/>
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:alpha="0.95"/>
+            
             <TextView
                 android:id="@+id/asr_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="--:--"
-                android:textColor="@color/text_color"
-                android:textSize="14sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:alpha="0.95"/>
         </LinearLayout>
 
-        <!-- صلاة المغرب -->
+        <!-- Maghrib Prayer -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:padding="4dp">
+            android:padding="8dp">
+            
             <TextView
                 android:id="@+id/maghrib_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Maghrib"
-                android:textColor="@color/text_color"
-                android:textSize="14sp"/>
-                <ImageView
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:fontFamily="sans-serif-medium"
+                android:alpha="0.9"/>
+            
+            <ImageView
                 android:id="@+id/maghrib_icon"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:src="@drawable/maghrib"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"/>
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:alpha="0.95"/>
+            
             <TextView
                 android:id="@+id/maghrib_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="--:--"
-                android:textColor="@color/text_color"
-                android:textSize="14sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:alpha="0.95"/>
         </LinearLayout>
-        <!-- صلاة العشاء -->
+
+        <!-- Isha Prayer -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:padding="4dp">
+            android:padding="8dp">
+            
             <TextView
                 android:id="@+id/Isha_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Isha"
-                android:textColor="@color/text_color"
-                android:textSize="14sp"/>
-                <ImageView
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:fontFamily="sans-serif-medium"
+                android:alpha="0.9"/>
+            
+            <ImageView
                 android:id="@+id/ishaicon"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:src="@drawable/isha"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"/>
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:alpha="0.95"/>
+            
             <TextView
                 android:id="@+id/Isha_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="--:--"
-                android:textColor="@color/text_color"
-                android:textSize="14sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:alpha="0.95"/>
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>
