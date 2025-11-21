@@ -21,8 +21,8 @@ class PrayerContainer extends StatelessWidget {
         builder: (context, state) {
           if (state is PrayerDetailsCubitSuccess) {
             return ListView.builder(
-              
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.symmetric(vertical: 2),
               itemCount: state.prayers.length,
               itemBuilder: (context, index) {
                 return PrayerItem(

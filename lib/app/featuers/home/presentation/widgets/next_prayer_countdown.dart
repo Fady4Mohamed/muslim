@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:muslim/app/featuers/home/logic/next_pray.dart';
 import 'package:muslim/app/featuers/prayer/data/models/pray_entity_model.dart';
 import 'package:muslim/app/featuers/prayer/presentation/manger/prayer_details_cubit/prayer_details_cubit.dart';
@@ -119,25 +120,21 @@ class _CountdownDisplay extends StatelessWidget {
         ),
         ClipRRect(
           borderRadius: BorderRadius.circular(4.0),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-            child: Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-              decoration: BoxDecoration(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+            decoration: BoxDecoration(
+              color: Colors.orange.withOpacity(0.3),
+              borderRadius: BorderRadius.circular(4.0),
+              border: Border.all(
                 color: Colors.orange.withOpacity(0.3),
-                borderRadius: BorderRadius.circular(4.0),
-                border: Border.all(
-                  color: Colors.orange.withOpacity(0.3),
-                  width: 1.0,
-                ),
+                width: 1.0,
               ),
-              child: CustomText(
-                text: timeRemaining,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
+            ),
+            child: CustomText(
+              text: timeRemaining,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
             ),
           ),
         ),

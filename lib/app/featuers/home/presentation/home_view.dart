@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:muslim/app/featuers/azkar/ui/azkar_details_card.dart';
 import 'package:muslim/app/featuers/home/presentation/widgets/next_prayer_countdown.dart';
 import 'package:muslim/app/featuers/home/presentation/widgets/pray_container.dart';
@@ -39,7 +40,6 @@ class _HomeViewState extends State<HomeView>
   }
 
   void _startClockTimer() {
-    // Update clock every minute instead of every second for better performance
     _clockTimer = Timer.periodic(const Duration(minutes: 1), (timer) {
       if (mounted) {
         final newTime = _getCurrentTime();
@@ -64,22 +64,22 @@ class _HomeViewState extends State<HomeView>
       backgroundColor: const Color(0xff000014),
       body: Stack(
         children: [
-          // Background image - use const for better performance
+          // Background image
           const _BackgroundImage(),
 
-          // Make the entire content scrollable
+          // Scrollable content
           SingleChildScrollView(
-            physics: const ClampingScrollPhysics(),
+            physics: const MinimalBouncingScrollPhysics(),
             child: Column(
               children: [
-                // Top section with prayer times
+                // Top section with time and prayer times
                 SafeArea(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 18.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Time and hijri date - separated into its own widget
+                        // Time and date container
                         _TimeAndDateContainer(currentTime: _currentTime),
 
                         const SizedBox(height: 15),
@@ -131,8 +131,15 @@ class _TimeAndDateContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+    return LiquidGlass(
+      glassContainsChild: false,
+      settings: const LiquidGlassSettings(
+        blur: 3,
+        refractiveIndex: 1.5,
+        ambientStrength: 2,
+        chromaticAberration: 5,
+      ),
+      shape: const LiquidRoundedRectangle(borderRadius: Radius.circular(12)),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
         decoration: BoxDecoration(
@@ -199,39 +206,67 @@ class _AzkarSection extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20.0),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  Colors.purple.withOpacity(0.7),
-                  Colors.deepPurple.withOpacity(0.8),
-                ],
-              ),
-              borderRadius: BorderRadius.circular(20.0),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 5,
-                  offset: const Offset(0, 2),
-                ),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Colors.purple.withOpacity(0.7),
+                Colors.deepPurple.withOpacity(0.8),
               ],
-              border: Border.all(
-                color: Colors.white.withOpacity(0.2),
-                width: 1,
+            ),
+            borderRadius: BorderRadius.circular(20.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                spreadRadius: 1,
+                blurRadius: 5,
+                offset: const Offset(0, 2),
               ),
+            ],
+            border: Border.all(
+              color: Colors.white.withOpacity(0.2),
+              width: 1,
             ),
-            child: const AzkarDetailsCard(
-              isHome: true,
-              id: 1,
-            ),
+          ),
+          child: const AzkarDetailsCard(
+            isHome: true,
+            id: 1,
           ),
         ),
       ),
     );
+  }
+}
+
+class MinimalBouncingScrollPhysics extends BouncingScrollPhysics {
+  const MinimalBouncingScrollPhysics({
+    super.parent,
+    this.customSpring = const SpringDescription(
+      mass: 1.0,
+      stiffness: 1000.0,
+      damping: 50.0,
+    ),
+  });
+
+  final SpringDescription customSpring;
+
+  @override
+  MinimalBouncingScrollPhysics applyTo(ScrollPhysics? ancestor) {
+    return MinimalBouncingScrollPhysics(
+      parent: buildParent(ancestor),
+      customSpring: customSpring,
+    );
+  }
+
+  @override
+  SpringDescription get spring => customSpring;
+
+  @override
+  double applyBoundaryConditions(ScrollMetrics position, double value) {
+    final double overscroll = super.applyBoundaryConditions(position, value);
+
+    return overscroll.clamp(-5.0, 5.0);
   }
 }

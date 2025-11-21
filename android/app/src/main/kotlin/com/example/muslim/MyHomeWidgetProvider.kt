@@ -18,23 +18,21 @@ class MyHomeWidgetProvider : HomeWidgetProvider() {
         for (widgetId in appWidgetIds) {
             val views = RemoteViews(context.packageName, R.layout.home_widget_layout)
             
-            
-            val dateText = widgetData.getString("date", "2025/2/1")
+            // Get prayer times from shared preferences
             val fajr = widgetData.getString("fajr", "--:--")
-            val Isha = widgetData.getString("Isha", "--:--")
             val dhuhr = widgetData.getString("dhuhr", "--:--")
             val asr = widgetData.getString("asr", "--:--")
             val maghrib = widgetData.getString("maghrib", "--:--")
+            val isha = widgetData.getString("Isha", "--:--")
             
-            
-            views.setTextViewText(R.id.date_text, dateText)
+            // Update prayer time TextViews
             views.setTextViewText(R.id.fajr_time, fajr)
-            views.setTextViewText(R.id.Isha_time, Isha)
             views.setTextViewText(R.id.dhuhr_time, dhuhr)
             views.setTextViewText(R.id.asr_time, asr)
             views.setTextViewText(R.id.maghrib_time, maghrib)
+            views.setTextViewText(R.id.Isha_time, isha)
             
-            
+            // Set click intent to open the app
             val intent = Intent(context, MainActivity::class.java)
             val pendingIntent = PendingIntent.getActivity(
                 context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
