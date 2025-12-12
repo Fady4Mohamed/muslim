@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:muslim/app/featuers/home/logic/next_pray.dart';
 import 'package:muslim/app/featuers/prayer/data/models/pray_entity_model.dart';
 import 'package:muslim/app/featuers/prayer/presentation/manger/prayer_details_cubit/prayer_details_cubit.dart';

@@ -28,5 +28,8 @@ void updatePrayerTimes() {
   HomeWidget.saveWidgetData<String>('asr', '3:45 PM');
   HomeWidget.saveWidgetData<String>('maghrib', '6:10 PM');
 
-  HomeWidget.updateWidget(name: 'MyHomeWidgetProvider');
+  HomeWidget.updateWidget(
+    name: 'MyHomeWidgetProvider',
+    iOSName: 'MyHomeWidgetProvider',
+  );
 }

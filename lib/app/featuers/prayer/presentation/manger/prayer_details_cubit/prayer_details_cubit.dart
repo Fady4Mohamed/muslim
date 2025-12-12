@@ -57,15 +57,17 @@ class PrayerDetailsCubit extends Cubit<PrayerDetailsCubitState> {
     );
   }
 
-void updatePrayerTimes(List<PrayEntityModel> prayers) {
-  HomeWidget.saveWidgetData<String>('date',prayerRepoImpl.date!); 
-  HomeWidget.saveWidgetData<String>('fajr', prayers[0].time);
-  HomeWidget.saveWidgetData<String>('Isha', prayers[4].time);
-  HomeWidget.saveWidgetData<String>('dhuhr', prayers[1].time);
-  HomeWidget.saveWidgetData<String>('asr', prayers[2].time);
-  HomeWidget.saveWidgetData<String>('maghrib', prayers[3].time);
+  void updatePrayerTimes(List<PrayEntityModel> prayers) {
+    HomeWidget.saveWidgetData<String>('date', prayerRepoImpl.date!);
+    HomeWidget.saveWidgetData<String>('fajr', prayers[0].time);
+    HomeWidget.saveWidgetData<String>('Isha', prayers[4].time);
+    HomeWidget.saveWidgetData<String>('dhuhr', prayers[1].time);
+    HomeWidget.saveWidgetData<String>('asr', prayers[2].time);
+    HomeWidget.saveWidgetData<String>('maghrib', prayers[3].time);
 
-  HomeWidget.updateWidget(name: 'MyHomeWidgetProvider');
-}
-
+    HomeWidget.updateWidget(
+      name: 'MyHomeWidgetProvider',
+      iOSName: 'MyHomeWidgetProvider',
+    );
+  }
 }

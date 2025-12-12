@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:muslim/app/core/utils/app_color.dart';
+import 'package:muslim/app/shared/custom_image.dart';
 import 'package:muslim/app/shared/custom_text.dart';
 
 class LocationTagApp extends StatefulWidget {
@@ -85,8 +86,8 @@ class _LocationTagAppState extends State<LocationTagApp> {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SvgPicture.asset(
-              'assets/images/marker-pin-01.svg',
+            const CustomImageAsset(
+              imagePath: 'assets/images/marker-pin-01.svg',
             ),
             SizedBox(width: 8.w),
             CustomText(

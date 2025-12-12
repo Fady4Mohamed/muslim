@@ -6,6 +6,7 @@ import 'package:muslim/app/core/utils/app_color.dart';
 import 'package:muslim/app/featuers/home/logic/next_pray.dart';
 import 'package:muslim/app/featuers/prayer/data/models/pray_entity_model.dart';
 import 'package:muslim/app/featuers/prayer/presentation/manger/prayer_details_cubit/prayer_details_cubit.dart';
+import 'package:muslim/app/shared/custom_image.dart';
 import 'dart:async';
 import 'package:muslim/app/shared/custom_text.dart';
 
@@ -45,23 +46,23 @@ class _SalaCounterState extends State<SalaCounter> {
           return Column(
             children: [
               (nextPrayer.name == 'Dhuhr')
-                  ? SvgPicture.asset(
-                      'assets/images/Sunny.svg',
+                  ? CustomImageAsset(
+                      imagePath: 'assets/images/Sunny.svg',
                       height: 60.h,
                     )
                   : (nextPrayer.name == 'Asr')
-                      ? SvgPicture.asset(
-                          'assets/images/Asr.svg',
+                      ? CustomImageAsset(
+                          imagePath: 'assets/images/Asr.svg',
                           height: 60.h,
                         )
                       : (nextPrayer.name == 'Magrib' ||
                               nextPrayer.name == 'Fajr')
-                          ? SvgPicture.asset(
-                              'assets/images/Magrib.svg',
+                          ? CustomImageAsset(
+                              imagePath: 'assets/images/Magrib.svg',
                               height: 60.h,
                             )
-                          : SvgPicture.asset(
-                              'assets/images/fajrr.svg',
+                          : CustomImageAsset(
+                              imagePath: 'assets/images/fajrr.svg',
                               height: 60.h,
                             ),
               SizedBox(
