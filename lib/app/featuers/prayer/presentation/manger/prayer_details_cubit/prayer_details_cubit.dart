@@ -2,15 +2,19 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:home_widget/home_widget.dart';
+import 'dart:developer';
+import 'package:muslim/app/featuers/notification/data/repositories/notification_repo_impl.dart';
 import 'package:muslim/app/featuers/prayer/data/models/pray_entity_model.dart';
 import 'package:muslim/app/featuers/prayer/data/repos/prayer_repo_impl.dart';
 
 part 'prayer_details_state.dart';
 
 class PrayerDetailsCubit extends Cubit<PrayerDetailsCubitState> {
-  PrayerDetailsCubit(this.prayerRepoImpl) : super(PrayerDetailsCubitLoading());
+  PrayerDetailsCubit(this.prayerRepoImpl, this.notificationRepo)
+      : super(PrayerDetailsCubitLoading());
 
   final PrayerRepoImpl prayerRepoImpl;
+  final NotificationRepoImpl notificationRepo;
 
   Future<void> fetchPrayerDetails() async {
     emit(PrayerDetailsCubitLoading());
@@ -50,11 +54,25 @@ class PrayerDetailsCubit extends Cubit<PrayerDetailsCubitState> {
       },
       (prayers) {
         updatePrayerTimes(prayers);
+        schedulePrayerNotifications(prayers);
         emit(
           PrayerDetailsCubitSuccess(prayers),
         );
       },
     );
+  }
+
+  void schedulePrayerNotifications(List<PrayEntityModel> prayers) {
+    for (var prayer in prayers) {
+      log('Scheduling notification for ${prayer.name} at ${prayer.time}');
+      DateTime? dateTime = DateTime.tryParse(prayer.time);
+      if (dateTime != null) {
+        notificationRepo.scheduleNotification(
+            id: prayers.indexOf(prayer),
+            title: 'حان موعد آذان صلاة ${prayer.name}',
+            scheduledTime: dateTime);
+      }
+    }
   }
 
   void updatePrayerTimes(List<PrayEntityModel> prayers) {

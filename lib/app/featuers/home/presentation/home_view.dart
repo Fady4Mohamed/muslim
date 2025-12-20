@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:muslim/app/featuers/azkar/ui/azkar_details_card.dart';
 import 'package:muslim/app/featuers/home/presentation/widgets/next_prayer_countdown.dart';
@@ -163,23 +164,30 @@ class _TimeAndDateContainer extends StatelessWidget {
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
                   ),
-                  BlocSelector<PrayerDetailsCubit, PrayerDetailsCubitState,
-                      String>(
-                    selector: (state) {
+                  BlocBuilder<PrayerDetailsCubit, PrayerDetailsCubitState>(
+                    builder: (context, state) {
                       if (state is PrayerDetailsCubitSuccess) {
-                        return context
-                                .read<PrayerDetailsCubit>()
-                                .prayerRepoImpl
-                                .date ??
-                            "Loading";
+                        return CustomText(
+                          text: context
+                                  .read<PrayerDetailsCubit>()
+                                  .prayerRepoImpl
+                                  .date ??
+                              "",
+                          color: Colors.white,
+                          fontSize: 16,
+                        );
                       }
-                      return "Loading";
-                    },
-                    builder: (context, hijriDate) {
-                      return CustomText(
-                        text: hijriDate,
-                        color: Colors.white,
-                        fontSize: 16,
+                      return Shimmer.fromColors(
+                        baseColor: Colors.grey[300]!,
+                        highlightColor: Colors.grey[100]!,
+                        child: Container(
+                          width: 100,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                        ),
                       );
                     },
                   ),

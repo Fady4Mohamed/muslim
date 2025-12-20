@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:muslim/app/featuers/home/logic/next_pray.dart';
 import 'package:muslim/app/featuers/prayer/data/models/pray_entity_model.dart';
 import 'package:muslim/app/featuers/prayer/presentation/manger/prayer_details_cubit/prayer_details_cubit.dart';
@@ -147,10 +147,30 @@ class _LoadingDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomText(
-      text: 'Loading...',
-      color: Colors.white,
-      fontSize: 16,
+    return Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child: Row(
+        children: [
+          Container(
+            width: 150,
+            height: 20,
+            color: Colors.white.withOpacity(0.2),
+          ),
+          const SizedBox(width: 8),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(4.0),
+            child: Container(
+              width: 80,
+              height: 30,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(4.0),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

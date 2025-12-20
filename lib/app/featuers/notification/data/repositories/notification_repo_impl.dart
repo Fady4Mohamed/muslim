@@ -26,6 +26,11 @@ class NotificationRepoImpl {
       if (status != PermissionStatus.granted) {
         await Permission.notification.request();
       }
+
+      PermissionStatus alarmStatus = await Permission.scheduleExactAlarm.status;
+      if (alarmStatus != PermissionStatus.granted) {
+        await Permission.scheduleExactAlarm.request();
+      }
     }
 
     const initAndroidSettings = AndroidInitializationSettings(
@@ -49,7 +54,7 @@ class NotificationRepoImpl {
     const androidDetails = AndroidNotificationDetails(
       'channel_id',
       'channel_name',
-      sound: UriAndroidNotificationSound('assets/athan.mp3'),
+      sound: UriAndroidNotificationSound('athan'),
       channelDescription: 'channel_description',
       importance: Importance.max,
       priority: Priority.max,

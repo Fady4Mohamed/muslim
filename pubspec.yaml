@@ -49,6 +49,7 @@ dependencies:
   liquid_glass_renderer: ^0.1.1-dev.10
   permission_handler: ^12.0.1
   shared_preferences: ^2.5.2
+  shimmer: ^3.0.0
   timezone: ^0.10.1
 
 dev_dependencies:
@@ -70,7 +71,6 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/database/
-    - assets/athan.mp3
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see

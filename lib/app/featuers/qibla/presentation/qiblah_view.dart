@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:muslim/app/core/utils/app_color.dart';
 import 'package:muslim/app/core/utils/app_images.dart';
 import 'package:muslim/app/featuers/qibla/logic/cubit/qiblah_cubit.dart';
@@ -35,7 +36,18 @@ class QiblahView extends StatelessWidget {
               child: BlocBuilder<QiblahCubit, QiblahState>(
                 builder: (context, state) {
                   if (state is QiblahLoading) {
-                    return const CircularProgressIndicator();
+                    return Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        width: 300,
+                        height: 300,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.2),
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    );
                   } else if (state is QiblahLoaded) {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.end,
